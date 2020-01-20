@@ -1,0 +1,62 @@
+<div class="container">
+    <br>
+    <h4><mark>
+        Auto:</mark> {{name}}
+    
+    <small>
+        {{model}}
+    </small>
+    </h4>
+    <div class="alert alert-success">
+        <h5>Main Characteristics of car:</h5>
+        <ul>
+            <li>Max Speed: <strong>{{max_speed}} m/ch</strong></li>
+            <li>Color of auto: <strong>{{colors.car}}</strong></li>
+            <li>Color of salon: <strong>{{colors.salon}}</strong></li>
+            <li>Color of wheels: <strong>{{colors.wheels}}</strong></li>
+        </ul>
+    </div>
+    <h4>Editing an object</h4><br>
+    <button class="btn btn-danger" (click)="showEdit()">Edit</button>
+    <div><br></div>
+        <form *ngIf = isEdit>
+            <div class="form-group">
+                <input type="text" placeholder="Car Name" class="form-control" [(ngModel)]="name" name="name"><br>
+                <input type="number" placeholder="Speed" class="form-control" [(ngModel)]="max_speed" name="max_speed"><br>
+                <input type="text" placeholder="Model Name" class="form-control" [(ngModel)]="model" name="model"><br>
+                <input type="text" placeholder="Frame Color" class="form-control" [(ngModel)]="colors.car" name="carColor"><br>
+                <input type="text" placeholder="Salon Color" class="form-control" [(ngModel)]="colors.salon" name="salonColor"><br>
+                <input type="text" placeholder="Wheels Color" class="form-control" [(ngModel)]="colors.wheels" name="wheelsColor"><br>
+            </div>
+        </form>
+    <h3>Options of car</h3><br>
+        <form (submit)="addOpt(option.value)">
+            <div class="form-group">
+                <label for="option">Add New option</label>
+            <input type="text" id="option" placeholder="" class="form-control" #option>
+            <br>
+            <button type="submit" class="btn btn-outline-success">Add</button>
+        </div>
+        </form>
+    <div class="alert alert-warning">
+        
+        <ul>
+            <li *ngFor='let opt of options'>{{opt}}
+                <button class="btn btn-danger small" (click)="deleteOpt(opt)">x</button>
+            </li>
+        </ul>
+    </div>
+    <h3>Choose a car</h3>
+    <button class="btn btn-danger" (click)="carSelect('audi')">Audi</button>
+    <button class="btn btn-success" (click)="carSelect('bmw')">BMW</button>
+    <button class="btn btn-info" (click)="carSelect('mer')">Mercedes</button>
+    
+</div>
+<div class="container">
+    <form>
+        <input type='text' [(ngModel)]='test' class="form-group" [ngModelOptions]="{standalone: true}">
+    </form>
+    <p>{{test}}</p>
+    <a [title] = 'title'>Link</a>
+</div>
+
